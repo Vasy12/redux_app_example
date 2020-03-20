@@ -1,11 +1,11 @@
-import React       from 'react';
-import { connect } from 'react-redux';
-import ACTION_TYPE from '../../action';
+import React                                  from 'react';
+import { connect }                            from 'react-redux';
+import ACTION_TYPE                            from '../../actions/actionTypes.js';
+import { decrementCounter, incrementCounter } from '../../actions/actionCreators.js';
 
 const Counter = (props) => {
 
   const { value, increment, decrement } = props;
-
   return (
     <>
       <h1>
@@ -26,12 +26,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: () => dispatch( {
-                                 type: ACTION_TYPE.INCREMENT
-                               } ),
-    decrement: () => dispatch( {
-                                 type: ACTION_TYPE.DECREMENT,
-                               } ),
+    increment: () => dispatch( incrementCounter() ),
+    decrement: () => dispatch( decrementCounter() ),
   };
 };
 

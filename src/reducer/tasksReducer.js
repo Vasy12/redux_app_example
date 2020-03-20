@@ -1,35 +1,36 @@
 import ACTION_TYPE from '../actions/actionTypes.js';
 
 const initialState = {
-  users: [],
-  isFetching: false,
+  isFetching: true,
+  tasks: [],
   error: null,
+
 };
 
-
-const usersReducer = (state = initialState, action) => {
+export default function tasksReducer (state = initialState, action) {
 
   switch (action.type) {
-    case ACTION_TYPE.GET_USERS_REQUEST:
+
+    case ACTION_TYPE.GET_TASKS_REQUEST:
       return {
         ...state,
         isFetching: true,
       };
-    case ACTION_TYPE.GET_USERS_SUCCESS:
+    case ACTION_TYPE.GET_TASKS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        users: action.users,
+        tasks: action.tasks,
       };
-    case ACTION_TYPE.GET_USERS_ERROR:
+    case ACTION_TYPE.GET_TASKS_ERROR:
       return {
         ...state,
         isFetching: false,
         error: action.error,
       };
+
     default:
       return state;
   }
-};
 
-export default usersReducer;
+}
